@@ -1,0 +1,48 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Hugo Template",
+	"scopeName": "text.html.hugo",
+	"fileTypes": [
+		"html",
+		"hugo",
+		"gohtml"
+	],
+	"patterns": [
+		{
+			"comment": "Quoted strings",
+			"name": "string.quoted.double.hugo",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.hugo",
+					"match": "\\\\."
+				}
+			]
+		},
+		{
+			"comment": "Control",
+			"name": "keyword.control.hugo",
+			"match": "(?<=\\{\\{)\\s*(?:partial|template|with|if|else if|else|begin|end).*?(?=}})"
+		},
+		{
+			"comment": "Inline structure",
+			"name": "support.inline.hugo",
+			"match": "(?<=\\{\\{).*?(?=}})"
+		},
+		{
+			"comment": "Built-in functions pipped",
+			"match": "(?<=\\|)\\s*(absURL|safeHTML)",
+			"name": "support.function.builtin.hugo"
+		},
+		{
+			"comment": "Content",
+			"include": "#content"
+		}
+	],
+	"repository": {
+		"content": {
+			"include": "text.html.basic"
+		}
+	}
+}

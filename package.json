@@ -1,0 +1,54 @@
+{
+  "name": "hugo-syntax",
+  "displayName": "Hugo Template Engine",
+  "description": "Hugo Template engine language syntax highlighting support",
+  "author": "Alexei Danchenkov",
+  "publisher": "alexeidanchenkov",
+  "version": "0.0.5",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "hugo",
+        "aliases": [
+          "Hugo Template Engine",
+          "Hugo",
+          "hugo"
+        ],
+        "extensions": [
+          ".html",
+          ".hugo",
+          ".gohtml"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hugo",
+        "scopeName": "text.html.hugo",
+        "path": "./syntaxes/hugo.tmLanguage.json",
+        "embeddedLanguages": {
+          "meta.embedded.html": "html",
+          "meta.embedded.frontmatter.yaml": "yaml",
+          "meta.embedded.frontmatter.xml": "xml"
+        }
+      }
+    ]
+  },
+  "scripts": {},
+  "devDependencies": {
+    "@types/vscode": "^1.97.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danchenkov/hugo-syntax.git"
+  },
+  "packageManager": "pnpm@9.1.0+sha512.67f5879916a9293e5cf059c23853d571beaf4f753c707f40cb22bed5fb1578c6aad3b6c4107ccb3ba0b35be003eb621a16471ac836c87beb53f9d54bb4612724"
+}
