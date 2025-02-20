@@ -2,9 +2,10 @@
   "name": "hugo-syntax",
   "displayName": "Hugo Template Engine",
   "description": "Hugo Template engine language syntax highlighting support",
+  "icon": "icon.png",
+  "version": "0.0.101",
   "author": "Alexei Danchenkov",
   "publisher": "adanchenkov",
-  "version": "0.0.100",
   "license": "MIT",
   "engines": {
     "vscode": "^1.97.0"
