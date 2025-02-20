@@ -1,2 +1,2 @@
-Hugo Template engine language syntax highlighting support
+Hugo Template syntax highlighting, still in testing
 

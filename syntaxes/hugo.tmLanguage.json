@@ -8,6 +8,9 @@
 	],
 	"patterns": [
 		{
+			"include": "#hugoTemplateInjection"
+		},
+		{
 			"include": "text.html.basic"
 		}
 	],
@@ -15,16 +18,246 @@
 		"text.html.hugo string.quoted.double.html": {
 			"patterns": [
 				{
-					"match": "\\{\\{.*?\\}\\}",
-					"name": "meta.template.expression1.hugo"
+					"begin": "\\{\\{",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.section.embedded.begin.hugo"
+						}
+					},
+					"end": "\\}\\}",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.embedded.end.hugo"
+						}
+					},
+					"contentName": "source.hugo",
+					"patterns": [
+						{
+							"include": "#doubleQuotedString"
+						},
+						{
+							"include": "#singleQuotedString"
+						},
+						{
+							"include": "#backtickedString"
+						},
+						{
+							"include": "#controlBlock"
+						},
+						{
+							"include": "#pipeFunction"
+						}
+					]
 				}
 			]
 		},
 		"text.html.hugo string.quoted.single.html": {
 			"patterns": [
 				{
-					"match": "\\{\\{.*?\\}\\}",
-					"name": "meta.template.expression2.hugo"
+					"begin": "\\{\\{",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.section.embedded.begin.hugo"
+						}
+					},
+					"end": "\\}\\}",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.section.embedded.end.hugo"
+						}
+					},
+					"contentName": "source.hugo",
+					"patterns": [
+						{
+							"include": "#doubleQuotedString"
+						},
+						{
+							"include": "#singleQuotedString"
+						},
+						{
+							"include": "#backtickedString"
+						},
+						{
+							"include": "#controlBlock"
+						},
+						{
+							"include": "#pipeFunction"
+						}
+					]
+				}
+			]
+		}
+	},
+	"repository": {
+		"hugoTemplateInjection": {
+			"patterns": [
+				{
+					"name": "source.hugo",
+					"begin": "\\{\\{",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.template.begin.hugo"
+						}
+					},
+					"end": "\\}\\}",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.template.end.hugo"
+						}
+					},
+					"contentName": "source.hugo",
+					"patterns": [
+						{
+							"include": "#frontMatter"
+						},
+						{
+							"include": "#commentBlock"
+						},
+						{
+							"include": "#hugoVariable"
+						},
+						{
+							"include": "#doubleQuotedString"
+						},
+						{
+							"include": "#singleQuotedString"
+						},
+						{
+							"include": "#backtickedString"
+						},
+						{
+							"include": "#controlBlock"
+						},
+						{
+							"include": "#pipeFunction"
+						}
+					]
+				}
+			]
+		},
+		"frontMatter": {
+			"begin": "^-{3}$",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.frontmatter.begin"
+				}
+			},
+			"end": "^-{3}$",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.frontmatter.end"
+				}
+			},
+			"name": "meta.embedded.frontmatter.yaml",
+			"patterns": [
+				{
+					"include": "source.yaml"
+				}
+			]
+		},
+		"commentBlock": {
+			"begin": "\\{\\{/\\*",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.comment.begin"
+				}
+			},
+			"end": "\\*/\\}\\}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.comment.end"
+				}
+			},
+			"name": "comment.block"
+		},
+		"doubleQuotedString": {
+			"comment": "Double quoted string",
+			"name": "string.quoted.double.hugo",
+			"begin": "\"",
+			"end": "\""
+		},
+		"singleQuotedString": {
+			"comment": "Single quoted string",
+			"name": "string.quoted.single.hugo",
+			"begin": "'",
+			"end": "'"
+		},
+		"backtickedString": {
+			"comment": "Backticked string",
+			"name": "string.quoted.backtick.hugo",
+			"begin": "`",
+			"end": "`"
+		},
+		"hugoVariable": {
+			"comment": "Variable",
+			"name": "variable.hugo",
+			"patterns": [
+				{
+					"match": "\\$[a-zA-Z_][a-zA-Z0-9_]*",
+					"name": "variable.other.global.hugo"
+				},
+				{
+					"match": "\\.[a-zA-Z_][a-zA-Z0-9_]*",
+					"name": "variable.other.property.hugo"
+				},
+				{
+					"match": "\\.Site\\.([a-zA-Z_][a-zA-Z0-9_]*)",
+					"name": "variable.other.parameter.hugo",
+					"captures": {
+						"1": {
+							"name": "variable.other.member.hugo"
+						}
+					}
+				},
+				{
+					"match": "\\.Params\\.([a-zA-Z_][a-zA-Z0-9_]*)",
+					"name": "variable.other.parameter.hugo",
+					"captures": {
+						"1": {
+							"name": "variable.other.member.hugo"
+						}
+					}
+				}
+			]
+		},
+		"pipeFunction": {
+			"comment": "Pipe function",
+			"name": "support.function.pipe.hugo",
+			"patterns": [
+				{
+					"match": "\\$[a-zA-Z_][a-zA-Z0-9_]*",
+					"name": "variable.other.global.hugo"
+				},
+				{
+					"match": "\\.[a-zA-Z_][a-zA-Z0-9_]*",
+					"name": "variable.other.property.hugo"
+				},
+				{
+					"match": "\\.Params\\.([a-zA-Z_][a-zA-Z0-9_]*)",
+					"name": "variable.other.parameter.hugo",
+					"captures": {
+						"1": {
+							"name": "variable.other.member.hugo"
+						}
+					}
+				},
+				{
+					"name": "keyword.operator.pipe.hugo",
+					"match": "\\|"
+				},
+				{
+					"name": "entity.name.function.hugo",
+					"match": "\\b(absURL|relURL|safeHTML|safeJS)\\b"
+				}
+			]
+		},
+		"controlBlock": {
+			"comment": "Control block",
+			"name": "support.control.hugo",
+			"patterns": [
+				{
+					"name": "keyword.control.hugo",
+					"match": "(?<=\\{\\{)\\s*(?:define|partial|template|with|if|else if|else|block|end)"
 				}
 			]
 		}
