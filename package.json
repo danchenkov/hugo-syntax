@@ -1,9 +1,9 @@
 {
   "name": "hugo-syntax",
-  "displayName": "Hugo Template Engine",
-  "description": "Hugo Template engine language syntax highlighting support",
+  "displayName": "Hugo Template Syntax",
+  "description": "Syntax highlighting support for Hugo Templates",
   "icon": "icon.png",
-  "version": "0.0.101",
+  "version": "0.0.112",
   "author": "Alexei Danchenkov",
   "publisher": "adanchenkov",
   "license": "MIT",
@@ -18,7 +18,7 @@
       {
         "id": "hugo",
         "aliases": [
-          "Hugo Template Engine",
+          "Hugo Template",
           "Hugo"
         ],
         "extensions": [
@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/danchenkov/hugo-syntax.git"
+    "url": "https://github.com/danchenkov/hugo-syntax"
   },
   "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af"
 }
