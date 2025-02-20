@@ -4,7 +4,7 @@
   "description": "Hugo Template engine language syntax highlighting support",
   "author": "Alexei Danchenkov",
   "publisher": "alexeidanchenkov",
-  "version": "0.0.5",
+  "version": "0.0.22",
   "license": "MIT",
   "engines": {
     "vscode": "^1.97.0"
@@ -18,13 +18,11 @@
         "id": "hugo",
         "aliases": [
           "Hugo Template Engine",
-          "Hugo",
-          "hugo"
+          "Hugo"
         ],
         "extensions": [
           ".html",
-          ".hugo",
-          ".gohtml"
+          ".hugo"
         ],
         "configuration": "./language-configuration.json"
       }
@@ -33,12 +31,7 @@
       {
         "language": "hugo",
         "scopeName": "text.html.hugo",
-        "path": "./syntaxes/hugo.tmLanguage.json",
-        "embeddedLanguages": {
-          "meta.embedded.html": "html",
-          "meta.embedded.frontmatter.yaml": "yaml",
-          "meta.embedded.frontmatter.xml": "xml"
-        }
+        "path": "./syntaxes/hugo.tmLanguage.json"
       }
     ]
   },
