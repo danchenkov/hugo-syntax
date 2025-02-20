@@ -8,95 +8,25 @@
 	],
 	"patterns": [
 		{
-			"include": "#injection"
-		},
-		{
 			"include": "text.html.basic"
 		}
 	],
-	"repository": {
-		"injection": {
+	"injections": {
+		"text.html.hugo string.quoted.double.html": {
 			"patterns": [
 				{
-					"name": "meta.template.expression.hugo",
-					"begin": "\\{\\{",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.definition.template.begin.hugo"
-						}
-					},
-					"while": "[^\\}]|\\}(?!\\})",
-					"end": "\\}\\}",
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.definition.template.end.hugo"
-						}
-					},
-					"contentName": "source.hugo",
-					"patterns": [
-						{
-							"include": "#doubleQuotedString"
-						},
-						{
-							"include": "#singleQuotedString"
-						},
-						{
-							"include": "#backtickedString"
-						},
-						{
-							"include": "#controlKeyword"
-						},
-						{
-							"include": "#pipeFunction"
-						},
-						{
-							"include": "source.hugo"
-						}
-					]
+					"match": "\\{\\{.*?\\}\\}",
+					"name": "meta.template.expression1.hugo"
 				}
 			]
 		},
-		"doubleQuotedString": {
-			"comment": "Double quoted string",
-			"name": "string.quoted.double.hugo",
-			"begin": "\"",
-			"end": "\""
-		},
-		"singleQuotedString": {
-			"comment": "Single quoted string",
-			"name": "string.quoted.single.hugo",
-			"begin": "'",
-			"end": "'"
-		},
-		"backtickedString": {
-			"comment": "Backticked string",
-			"name": "string.quoted.double.hugo",
-			"begin": "`",
-			"end": "`"
-		},
-		"pipeFunction": {
-			"comment": "Pipe function",
-			"name": "support.function.pipe.hugo",
+		"text.html.hugo string.quoted.single.html": {
 			"patterns": [
 				{
-					"name": "keyword.operator.pipe.hugo",
-					"match": "\\|"
-				},
-				{
-					"name": "support.function.hugo",
-					"match": "\\b(absURL|relURL|safeHTML|safeJS)\\b"
+					"match": "\\{\\{.*?\\}\\}",
+					"name": "meta.template.expression2.hugo"
 				}
 			]
-		},
-		"controlKeyword": {
-			"comment": "Control keyword",
-			"name": "keyword.control.hugo",
-			"patterns": [
-				{
-					"name": "keyword.control.hugo",
-					"match": "(?<=\\{\\{)\\s*(?:partial|template|with|if|else if|else|begin|end).*?(?=}})"
-				}
-			]
-		},
+		}
 	}
 }
