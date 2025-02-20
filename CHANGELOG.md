@@ -2,5 +2,5 @@
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [0.0.112]
+## [v0.0] - 2025-02-02
 - Initial release
